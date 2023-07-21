@@ -57,13 +57,13 @@ router.route('/login').post(async (req, res) => {
           expires: new Date(Date.now() + 30000000),
           httpOnly: true
         })
-        const { name, email } = singin;
+        const { name, email,_id } = singin;
         // res.json({ token, name, email })
 
         if (!isMatch) {
           return res.status(401).send({ message: 'invalid user' })
         } else {
-          return res.status(200).send({ token, name, email })
+          return res.status(200).send({ token, name, email,_id })
           next()
         }
       } else {
