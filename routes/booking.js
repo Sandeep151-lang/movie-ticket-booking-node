@@ -42,7 +42,7 @@ router.post('/ticketBooking', async (req, res) => {
     }
 })
 
-router.get('/getdetails', jwtAuth, async (req, res) => {
+router.post('/getdetails', jwtAuth, async (req, res) => {
     try {
         await show.find({ user_id: req.rootUser._id }).then((item) => {
             return res.status(200).json({message:item})
