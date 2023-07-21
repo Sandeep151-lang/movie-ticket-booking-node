@@ -42,9 +42,10 @@ router.post('/ticketBooking', async (req, res) => {
     }
 })
 
-router.post('/getdetails', jwtAuth, async (req, res) => {
+router.post('/getdetails', async (req, res) => {
+   const {id} = req?.body
     try {
-        await show.find({ user_id: req.rootUser._id }).then((item) => {
+        await show.findById(id).then((item) => {
             return res.status(200).json({message:item})
         })
     } catch (error) {
