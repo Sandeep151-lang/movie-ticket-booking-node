@@ -84,7 +84,7 @@ router.get('/user', async function (req, res, next) {
 
 
 //GET THE USERS DETAILS AFTER LOGIN
-router.get('/about', jwtAuth, (req, res) => {
+router.post('/about', jwtAuth, (req, res) => {
   res.json({ message: req.rootUser })
   // res.send(req.rootUser)
 })
