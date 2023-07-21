@@ -17,7 +17,12 @@ require('./dbconfig.js/db')
     //     credentials: true, //included credentials as true
     //   };
    
-    app.use(cors({origin:"*"}))
+    const corsOptions = {
+        origin: true, //included origin as true
+        credentials: true, //included credentials as true
+      };
+      app.use(cors(corsOptions));
+      app.options('*',cors())
     app.use(express.json());
     app.use(express.urlencoded({ extended: false }));
     app.use(bodyParser.json());
