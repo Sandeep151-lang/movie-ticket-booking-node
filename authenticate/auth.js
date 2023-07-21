@@ -3,7 +3,6 @@ const User = require('../schema/UserSchema');
 
 
 const jwtAuth = async (req, res, next) => {
-    console.log(req.body)
     try {
         const token = req?.body?.token;
         const verifyToken = jwt.verify(token, 'sandeepnandanwarfullstackdeveloper');

@@ -8,7 +8,6 @@ const stripe = require('stripe')('sk_test_51K1p90SJsqVvBs7nBt5QMaiBrOaB847tNRNQq
 
 router.post('/ticketBooking', async (req, res) => {
     try {
-        console.log(req.body.token, req.body.total);
         const { user_id, date, Total, Movie_name, TotalSeats, seats, Time,token ,name,email} = req.body
         //const { token, total, cart, name, email, id, address, starttime, Total, endtime } = req.body
         //console.log(Total, starttime, endtime);
@@ -45,7 +44,7 @@ router.post('/ticketBooking', async (req, res) => {
 router.post('/getdetails', async (req, res) => {
    const {id} = req?.body
     try {
-        await show.findById(id).then((item) => {
+        await show.findOne({user_id : id}).then((item) => {
             return res.status(200).json({message:item})
         })
     } catch (error) {
