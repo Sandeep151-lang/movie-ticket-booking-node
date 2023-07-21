@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+const bodyParser = require('body-parser');
 const cors = require("cors");
 var usersRouter = require('./routes/users');
 var bookingRouter = require('./routes/booking')
@@ -16,16 +17,10 @@ require('./dbconfig.js/db')
     //     credentials: true, //included credentials as true
     //   };
    
-const corsOptions = {
-    origin: true, //included origin as true
-    credentials: true, //included credentials as true
-  };
-  app.use(cors(corsOptions));
-  app.options('*',cors())
+    app.use(cors({origin:"*"}))
     app.use(express.json());
     app.use(express.urlencoded({ extended: false }));
     app.use(bodyParser.json());
-
 
 
 app.get('/test/list',(req,res)=>{
